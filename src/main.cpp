@@ -36,12 +36,18 @@ int main(int argc, char** argv)
             std::ifstream inFile;
             inFile.open(inputFile);
             if (inFile.is_open()){
+                char* inFileChar = new char[100000];
                 std::cout<<"Input file successfully opened"<<std::endl;
+
+                inFile.read(inFileChar, 100000);
+                std::cout<<inFileChar<<std::endl;
+
+                delete[] inFileChar;
+                inFile.close();
 
             } else {
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-                std::cout<<"Error opening input file. \n
-                Please check that the file exists and that you have permission to read it"<<std::endl;
+                std::cout<<"Error opening input file. \n Please check that the file exists and that you have permission to read it"<<std::endl;
                 SetConsoleTextAttribute(hConsole, originalAttributes);
             }
 
