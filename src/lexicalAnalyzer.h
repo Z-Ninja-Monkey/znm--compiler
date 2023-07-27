@@ -1,6 +1,6 @@
-#ifndef LEXICAL_ANALYZER_HPP
-#define LEXICAL_ANALYZER_HPP
+#ifndef LEXICAL_ANALYZER_H
+#define LEXICAL_ANALYZER_H
 
 char* startLexicalAnalysis(char* str);
 
-#endif // LEXICAL_ANALYZER_HPP
+#endif // LEXICAL_ANALYZER_H
