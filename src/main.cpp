@@ -8,8 +8,9 @@
 #include <thread>
 
 #include <unistd.h>
-
 #include <windows.h>
+
+#include "lexicalAnalyzer.h"
 
 int main(int argc, char** argv)
 {
@@ -42,6 +43,9 @@ int main(int argc, char** argv)
                 inFile.read(inFileChar, 100000);
                 std::cout<<inFileChar<<std::endl;
 
+                startLexicalAnalysis(inFileChar);
+                
+
                 delete[] inFileChar;
                 inFile.close();
 
@@ -52,20 +56,6 @@ int main(int argc, char** argv)
             }
 
         }
-    }
-    
-
-    for (int i = 0; i < argc; i++){
-        /*
-        if(strcmp(argv[i],"bob") == 0){
-            
-            std::cout<<"You asked for bob, so you get bob! \n";
-            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-            for (int i = 0; i < 300; i++){
-                std::cout<<"BOB \n";
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
-            }
-        }*/
     }
     
     return 0;
