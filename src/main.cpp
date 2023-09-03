@@ -44,7 +44,6 @@ int main(int argc, char** argv)
                 std::cout<<inFileChar<<std::endl;
 
                 startLexicalAnalysis(inFileChar);
-                
 
                 delete[] inFileChar;
                 inFile.close();
