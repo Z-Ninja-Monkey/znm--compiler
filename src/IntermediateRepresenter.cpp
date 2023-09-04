@@ -12,7 +12,7 @@ char* ItermediatelyRepresent(char* str){
         char currentChar = str[i];
         if(skipAmount > 0){
             skipAmount -= 1;
-            break;
+            continue;
         }
 
         if(currentChar != '\n' && currentChar != ' '){
@@ -20,22 +20,28 @@ char* ItermediatelyRepresent(char* str){
             return;
         }
 
-        if (currentChar == 'm' && str[i + 1] == 'a' && str[i + 2] == 'i' && str[i + 3] == 'n') {
+
+        if(keywordCheck('m', "ain") != -1){
             outFile << "start\n";
-            skipAmount = 3;
+            skipAmount = keywordCheck('m', "ain");
         }
+
         if (currentChar == 'p' && str[i + 1] == 'r' && str[i + 2] == 'i' && str[i + 3] == 'n' && str[i + 4] == 't') {
             outFile << "print ";
             skipAmount = 4;
+            break;
         }
         if (currentChar == '(') {
+
             if(str[i + 1] == ')'){
                 outFile << '\n';
             }
-            if(str[i + 1] == '"'){
-                
-                while(){
 
+            if(str[i + 1] == '"'){
+                int skipAmount = 0;
+                for (int tempSkipAmount = 1; str[i + 1 + tempSkipAmount] != '"'; tempSkipAmount++) {
+                    skipAmount = tempSkipAmount;
+                    break;
                 }
             }
         }
@@ -46,4 +52,12 @@ char* ItermediatelyRepresent(char* str){
     outFile.close();
     
     return str;
+}
+
+int keywordCheck(char startLetter, char* nextLetters){
+    if (currentChar == 'm' && str[i + 1] == 'a' && str[i + 2] == 'i' && str[i + 3] == 'n') {
+            outFile << "start\n";
+            skipAmount = 3;
+            break;
+    }
 }
