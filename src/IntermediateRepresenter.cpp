@@ -1,8 +1,12 @@
 #include <fstream>
 #include <cstring>
 
-char* ItermediatelyRepresent(char* str){
+int index = 0;
+char* str;
 
+char* ItermediatelyRepresent(char* input){
+    str = input;
+    
     std::ofstream outFile;
     outFile.open("log.txt", std::ios_base::app);
     int length = strlen(str);
@@ -10,6 +14,7 @@ char* ItermediatelyRepresent(char* str){
 
     for (int i = 0; length - 3 > i; i++){
         char currentChar = str[i];
+        index = i;
         if(skipAmount > 0){
             skipAmount -= 1;
             continue;
@@ -55,9 +60,13 @@ char* ItermediatelyRepresent(char* str){
 }
 
 int keywordCheck(char startLetter, char* nextLetters){
-    if (currentChar == 'm' && str[i + 1] == 'a' && str[i + 2] == 'i' && str[i + 3] == 'n') {
-            outFile << "start\n";
-            skipAmount = 3;
-            break;
+
+    if (startLetter == 'm'){
+        for(int i = 0; i < strlen(nextLetters); i++){
+            if(str[index] == nextLetters[i]){
+                return i;
+            }
+        }
+        
     }
 }
